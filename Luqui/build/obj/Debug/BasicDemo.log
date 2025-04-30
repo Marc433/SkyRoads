@@ -1,25 +1,5 @@
 ﻿  main.cpp
-C:\Users\marke\Documentos\Asignaturas\Tercero\Motor\Luqui\examples\BasicDemo\main.cpp(368,28): warning C4305: 'argumento': truncamiento de 'double' a 'GLclampf'
-C:\Users\marke\Documentos\Asignaturas\Tercero\Motor\Luqui\examples\BasicDemo\main.cpp(368,23): warning C4305: 'argumento': truncamiento de 'double' a 'GLclampf'
-C:\Users\marke\Documentos\Asignaturas\Tercero\Motor\Luqui\examples\BasicDemo\main.cpp(368,18): warning C4305: 'argumento': truncamiento de 'double' a 'GLclampf'
-LUQUI.lib(WindowSystem.obj) : warning LNK4099: no se encontró PDB '' con 'LUQUI.lib(WindowSystem.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
-LUQUI.lib(Input.obj) : warning LNK4099: no se encontró PDB '' con 'LUQUI.lib(Input.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
-LUQUI.lib(Window.obj) : warning LNK4099: no se encontró PDB '' con 'LUQUI.lib(Window.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
-LUQUI.lib(Shader.obj) : warning LNK4099: no se encontró PDB '' con 'LUQUI.lib(Shader.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
-LUQUI.lib(Program.obj) : warning LNK4099: no se encontró PDB '' con 'LUQUI.lib(Program.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
-LUQUI.lib(Mesh.obj) : warning LNK4099: no se encontró PDB '' con 'LUQUI.lib(Mesh.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
-LUQUI.lib(Model.obj) : warning LNK4099: no se encontró PDB '' con 'LUQUI.lib(Model.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
-LUQUI.lib(System.obj) : warning LNK4099: no se encontró PDB '' con 'LUQUI.lib(System.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
-LUQUI.lib(ECSManager.obj) : warning LNK4099: no se encontró PDB '' con 'LUQUI.lib(ECSManager.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
-LUQUI.lib(Imgui1.obj) : warning LNK4099: no se encontró PDB '' con 'LUQUI.lib(Imgui1.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
-LUQUI.lib(Figure.obj) : warning LNK4099: no se encontró PDB '' con 'LUQUI.lib(Figure.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
-LUQUI.lib(stb_image.obj) : warning LNK4099: no se encontró PDB '' con 'LUQUI.lib(stb_image.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
-LUQUI.lib(JobSystem.obj) : warning LNK4099: no se encontró PDB '' con 'LUQUI.lib(JobSystem.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
-LUQUI.lib(imgui.obj) : warning LNK4099: no se encontró PDB '' con 'LUQUI.lib(imgui.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
-LUQUI.lib(imgui_draw.obj) : warning LNK4099: no se encontró PDB '' con 'LUQUI.lib(imgui_draw.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
-LUQUI.lib(imgui_widgets.obj) : warning LNK4099: no se encontró PDB '' con 'LUQUI.lib(imgui_widgets.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
-LUQUI.lib(imgui_impl_glfw.obj) : warning LNK4099: no se encontró PDB '' con 'LUQUI.lib(imgui_impl_glfw.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
-LUQUI.lib(imgui_impl_opengl3.obj) : warning LNK4099: no se encontró PDB '' con 'LUQUI.lib(imgui_impl_opengl3.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
-LUQUI.lib(imgui_stdlib.obj) : warning LNK4099: no se encontró PDB '' con 'LUQUI.lib(imgui_stdlib.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
-LUQUI.lib(imgui_tables.obj) : warning LNK4099: no se encontró PDB '' con 'LUQUI.lib(imgui_tables.obj)' o en ''; se vinculará el objeto sin tener en cuenta información de depuración
-  BasicDemo.vcxproj -> C:\Users\marke\Documentos\Asignaturas\Tercero\Motor\Luqui\build\BasicDemo\Debug\BasicDemo.exe
+C:\Users\marke\Documentos\Asignaturas\Tercero\Motor\SkyRoads\Luqui\examples\BasicDemo\main.cpp(367,28): warning C4305: 'argumento': truncamiento de 'double' a 'GLclampf'
+C:\Users\marke\Documentos\Asignaturas\Tercero\Motor\SkyRoads\Luqui\examples\BasicDemo\main.cpp(367,23): warning C4305: 'argumento': truncamiento de 'double' a 'GLclampf'
+C:\Users\marke\Documentos\Asignaturas\Tercero\Motor\SkyRoads\Luqui\examples\BasicDemo\main.cpp(367,18): warning C4305: 'argumento': truncamiento de 'double' a 'GLclampf'
+  BasicDemo.vcxproj -> C:\Users\marke\Documentos\Asignaturas\Tercero\Motor\SkyRoads\Luqui\build\BasicDemo\Debug\BasicDemo.exe

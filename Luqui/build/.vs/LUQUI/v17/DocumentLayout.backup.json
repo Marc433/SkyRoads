@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\marke\\Documentos\\Asignaturas\\Tercero\\Motor\\Luqui\\build\\",
+  "WorkspaceRootPath": "C:\\Users\\marke\\Documentos\\Asignaturas\\Tercero\\Motor\\SkyRoads\\Luqui\\build\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{ACCAA00F-1835-5586-6173-062CCD1C33DB}|BasicDemo.vcxproj|C:\\Users\\marke\\Documentos\\Asignaturas\\Tercero\\Motor\\Luqui\\examples\\BasicDemo\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{ACCAA00F-1835-5586-6173-062CCD1C33DB}|BasicDemo.vcxproj|C:\\Users\\marke\\Documentos\\Asignaturas\\Tercero\\Motor\\SkyRoads\\Luqui\\examples\\BasicDemo\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,13 +19,13 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "main.cpp",
-              "DocumentMoniker": "C:\\Users\\marke\\Documentos\\Asignaturas\\Tercero\\Motor\\Luqui\\examples\\BasicDemo\\main.cpp",
+              "DocumentMoniker": "C:\\Users\\marke\\Documentos\\Asignaturas\\Tercero\\Motor\\SkyRoads\\Luqui\\examples\\BasicDemo\\main.cpp",
               "RelativeDocumentMoniker": "..\\examples\\BasicDemo\\main.cpp",
-              "ToolTip": "C:\\Users\\marke\\Documentos\\Asignaturas\\Tercero\\Motor\\Luqui\\examples\\BasicDemo\\main.cpp",
+              "ToolTip": "C:\\Users\\marke\\Documentos\\Asignaturas\\Tercero\\Motor\\SkyRoads\\Luqui\\examples\\BasicDemo\\main.cpp",
               "RelativeToolTip": "..\\examples\\BasicDemo\\main.cpp",
-              "ViewState": "AgIAAAMBAAAAAAAAAAApwBIBAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAAMEBAAAAAAAAAAAqwNgBAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-28T23:43:44.849Z",
+              "WhenOpened": "2025-04-30T10:00:05.312Z",
               "EditorCaption": ""
             }
           ]

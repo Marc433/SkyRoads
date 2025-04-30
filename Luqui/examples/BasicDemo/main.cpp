@@ -13,6 +13,7 @@
 #include "ECS/System.hpp"
 #include "ECS/ECSManager.hpp"
 #include "Imgui.hpp"
+#include "../deps/imgui/imgui.h"
 
 void ResetGame(ECSManager& ecsmanager, Entity naveEntity, float& currentTargetX, float& speed, float spacing) {
     currentTargetX = 0.0f;
@@ -67,8 +68,8 @@ int main() {
   float currentTargetX = 0.0f;
   float lateralSpeed = 200.0f;
   float spacing = 0.0f;
+
   ///////START OF PROGRAM & SHADERS/////
-  /** Creating shaders */
   Shader vertex = Shader();
   if (!vertex.loadFromFile(Shader::ShaderType::kShaderType_Vertex, "../data/Shaders/vertex.vs")) {
     std::cerr << "Error al cargar el vertex shader desde archivo." << std::endl;
@@ -118,8 +119,8 @@ int main() {
   Entity CameraEntity = ecsmanager.createEntity();
   ecsmanager.addComponent<CameraComponent>(CameraEntity);
   ecsmanager.editComponent<CameraComponent>(CameraEntity, [](CameraComponent& camera) {
-    camera.position = glm::vec3(0.0f, 300.0f, 300.0f); // Nueva posición
-    camera.updateViewMatrix(); // Actualizar la matriz de vista
+    camera.position = glm::vec3(0.0f, 300.0f, 300.0f);
+    camera.updateViewMatrix();
     });
 
   ecsmanager.addComponent<InputComponent>(CameraEntity);
@@ -141,12 +142,12 @@ int main() {
   Entity lightEntity = ecsmanager.createEntity();
 
   ecsmanager.editComponent<LightComponent>(lightEntity, [](LightComponent& light) {
-    light.type = LightType::Directional; // Tipo de luz (Point Light)
-    light.color = glm::vec3(1.0f, 1.0f, 1.0f); // Color de la luz (RGB)
-    light.position = glm::vec3(20.0f, 200.0f, 0.0f); // Posición de la luz
+    light.type = LightType::Directional; 
+    light.color = glm::vec3(1.0f, 1.0f, 1.0f); 
+    light.position = glm::vec3(20.0f, 200.0f, 0.0f);
     light.direction = glm::vec3(0.0f, -1.0f, -0.3f);
-    light.intensity = 2.0f; // Intensidad de la luz
-    light.radius = 250.0f; // Radio de influencia de la luz
+    light.intensity = 2.0f; 
+    light.radius = 250.0f; 
     });
 
   ecsmanager.addComponent<NameComponent>(lightEntity);
@@ -162,7 +163,7 @@ int main() {
   ecsmanager.editComponent<TransformComponent>(naveEntity, [](TransformComponent& transform) {
       transform.position = { 0.0f, 120.0f, 0.0f };
       transform.rotation = { 0.0f,180.0f,0.0f };
-      transform.scale = { 10.0f, 10.0f, 10.0f }; // Ajusta el tamaño si hace falta
+      transform.scale = { 10.0f, 10.0f, 10.0f }; 
       });
 
   ecsmanager.editComponent<RenderComponent>(naveEntity, [&](RenderComponent& modelComp) {
@@ -172,15 +173,14 @@ int main() {
   auto cube_mesh = std::make_shared<Model>("../data/Models/cube/cube.obj", "carril");
 ecsmanager.resources.push_back(cube_mesh);
 
-// Crear dos plataformas por carril (total 6)
 for (int lane = 0; lane < 3; ++lane) {
     for (int i = 0; i < 2; ++i) {
         Entity laneEntity = ecsmanager.createEntity();
 
         ecsmanager.editComponent<TransformComponent>(laneEntity, [lane, i, &spacing](TransformComponent& transform) {
-            float baseZ = -1500.0f; // desplaza todo hacia atrás (antes -900)
-            float gap = 150.0f;      // hueco entre plataformas
-            spacing = 1000.0f + gap; // separación con hueco incluido
+            float baseZ = -1500.0f; 
+            float gap = 150.0f;      
+            spacing = 1000.0f + gap; 
 
             transform.position = {
                 (float)(lane - 1) * 230.0f,
@@ -188,7 +188,6 @@ for (int lane = 0; lane < 3; ++lane) {
                 baseZ + i * spacing
             };
 
-            // Cambiamos la rotación y escala según carril y fila
             if (i == 0) {
                 switch (lane) {
                 case 0:
@@ -239,13 +238,22 @@ for (int lane = 0; lane < 3; ++lane) {
   const float jumpStrength = 400.0f;
   const float gravity = 800.0f;
   const float groundY = 120.0f;
+  bool timerStarted = false;
+  float gameTime = 0.0f;
 
   // Ciclo del juego
   while (!window->isOpen()) {
     LuquiImgui.NewFrame();
-    // Control de velocidad W/S
     if (input.isKeyPressed(Input::Key::KEY_W)) {
         speed += acceleration * 0.016f;
+
+        if (!timerStarted) {
+            timerStarted = true;
+            gameTime = 0.0f;
+        }
+    }
+    if (timerStarted) {
+        gameTime += 0.016f; 
     }
     if (input.isKeyPressed(Input::Key::KEY_S)) {
         speed -= deceleration * 0.016f;
@@ -254,7 +262,6 @@ for (int lane = 0; lane < 3; ++lane) {
     if (speed > maxSpeed) speed = maxSpeed;
     if (speed < 0.0f) speed = 0.0f;
 
-    // Movimiento lateral suave con A/D
     if (input.isKeyPressed(Input::Key::KEY_A)) {
         currentTargetX -= lateralSpeed * 0.016f;
     }
@@ -305,14 +312,14 @@ for (int lane = 0; lane < 3; ++lane) {
         if (isFalling) {
             naveTransform.value()->position.y -= gravity * 0.016f;
 
-            // Reinicio simple al caer demasiado
             if (naveTransform.value()->position.y < -200.0f) {
                 ResetGame(ecsmanager, naveEntity, currentTargetX, speed, spacing);
                 isFalling = false;
+                timerStarted = false;
+                gameTime = 0.0f;
             }
         }
     }
-    // Actualizar posición lateral de la nave
     if (auto naveTransform = ecsmanager.getComponent<TransformComponent>(naveEntity)) {
         naveTransform.value()->position.x = currentTargetX;
     }
@@ -322,7 +329,6 @@ for (int lane = 0; lane < 3; ++lane) {
             naveTransform.value()->position.y += jumpVelocity * 0.016f;
             jumpVelocity -= gravity * 0.016f;
 
-            // Aterrizaje
             if (naveTransform.value()->position.y <= groundY) {
                 naveTransform.value()->position.y = groundY;
                 jumpVelocity = 0.0f;
@@ -334,7 +340,6 @@ for (int lane = 0; lane < 3; ++lane) {
 
     
 
-    // Mover carriles hacia el jugador
     for (Entity entity = 1; entity < ecsmanager.get_nextEntity(); ++entity) {
         if (!ecsmanager.isEntityAlive(entity)) continue;
 
@@ -343,19 +348,15 @@ for (int lane = 0; lane < 3; ++lane) {
         if (!modelComp || !transform) continue;
 
         if (modelComp.value()->model->get_name() == "carril") {
-            // Mover la plataforma
             transform.value()->position.z += speed * 0.016f;
 
-            // Si la plataforma pasó el umbral, colócala detrás de la otra
             if (transform.value()->position.z > 600.0f) {
-                // La movemos hacia atrás 2000.0 (la suma de dos plataformas de largo)
                 transform.value()->position.z -= spacing * 2.0f;
             }
         }
     }
 
 
-    //glEnable(GL_COLOR_BUFFER_BIT);
     for (Entity entity = 1; entity < ecsmanager.get_nextEntity(); ++entity)
     {
       if (auto transformOpt = ecsmanager.getComponent<TransformComponent>(entity))
@@ -363,7 +364,6 @@ for (int lane = 0; lane < 3; ++lane) {
         RenderSystem::UpdateTransformMatrix(*transformOpt.value());
       }
     }
-    // Limpiar la pantalla
     glClearColor(0.4, 0.4, 0.4, 1.0);
     glFrontFace(GL_CCW);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
@@ -376,7 +376,6 @@ for (int lane = 0; lane < 3; ++lane) {
     glBlendFunc(GL_ONE, GL_ZERO);
 
 
-    //LuquiImgui.EntityWindows(ecsmanager);
 
     program.use();
     glm::mat4x4 model, view, projection;
@@ -391,8 +390,6 @@ for (int lane = 0; lane < 3; ++lane) {
       if (inputComp)
         inputSystem.update(inputComp.value(), cameraComponent.value(), input, 0.016f);
 
-      //cameraComponent.value()->updatePosition(transformOpt.value());
-      //cameraComponent.value()->updateForward(transformOpt.value());
       // Usa las matrices de la cámara del componente
       cameraComponent.value()->updateViewMatrix();
       cameraComponent.value()->updateProjectionMatrix();
@@ -469,11 +466,18 @@ for (int lane = 0; lane < 3; ++lane) {
     glDisable(GL_BLEND);
     program.unuse();
     // Intercambiar buffers
+    ImGui::Begin("Contador");
+    ImGui::Text("Tiempo: %.2f segundos", gameTime);
+    ImGui::End();
+
+    ImGui::SetNextWindowPos(ImVec2(1000, 50), ImGuiCond_Always);
+    ImGui::Begin("Velocidad");
+    ImGui::Text("Velocidad actual: %.2f", speed);
+    ImGui::End();
     LuquiImgui.Render();
     window->render();
   }
 
   window->~Window();
   WS->~WindowSystem();
-  return 0;
 }
